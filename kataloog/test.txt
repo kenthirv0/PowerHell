@@ -1,0 +1,21 @@
+Folder PATH listing
+Volume serial number is 5CA9-8149
+C:.
+|   info.txt
+|   test.txt
+|   
++---alamkataloog1
+|   +---alamalamkataloog
+|   |       fail1.txt
+|   |       fail2.txt
+|   |       fail3.txt
+|   |       
+|   \---alamalamkataloog2
+|           fail3.txt
+|           
+\---alamkataloog2
+        fail1.txt
+        fail2.txt
+        fail3.txt
+        
+suvaline lause 
