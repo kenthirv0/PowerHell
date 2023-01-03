@@ -2,33 +2,33 @@
 #14.12.22
 #yl 3
 
-# Get the file path from the user
+# valib csv faili
 $file = Read-Host "Enter the path of the CSV file"
 
-# Import the CSV file
+# impordib csv faili
 $data = Import-Csv $file
 
-# Use a regular expression to match email addresses
+# kasutab eposti aadresside sobitamiseks ühesugust formaati
 $pattern = "\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b"
 
-# Loop through each row of the CSV file
+# loeb CSV-faili iga rida
 foreach ($row in $data) {
-    # Loop through each column of the current row
+    # kerib läbi praeguse rea iga veeru
     foreach($column in $row.PSObject.Properties) {
-        # Check if the current column contains an email address
+        # kontrollib kas praeguses veerus on e-posti aadress
         if ($column.Value -match $pattern) {
-            # Extract the username from the email address
+            # võtab e-posti aadressist kasutajanime
             $username = $column.Value.Split("@")[0]
 
-            # Generate a random password
+            # loob suvalise parooli
             $password = -join ((65..90) + (97..122) | Get-Random -Count 8 | % {[char]$_})
 
-            # Add the username and password to the current row
+            # lisab kasutajanime ja parooli praegusesse ritta
             $row | Add-Member -MemberType NoteProperty -Name "Username" -Value $username
             $row | Add-Member -MemberType NoteProperty -Name "Password" -Value $password
         }
     }
 }
 
-# Save the file
+# salvestab vaili
 $data | Export-Csv $file -NoTypeInformation
