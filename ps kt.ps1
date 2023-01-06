@@ -1,9 +1,11 @@
-﻿#K.Hirv
+#K.Hirv
 #14.12.22
 #yl 3
 
 # impordib CSV faili
-Import-Csv c:\temp\emails.csv | ForEach-Object {
+$fileName = Read-Host "Sisesta faili nimi: "
+
+$data = Import-Csv $fileName
 
 } -ErrorAction SilentlyContinue
 if (!(Test-Path c:\temp\emails.csv)) {
